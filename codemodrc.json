@@ -1,0 +1,12 @@
+{
+  "name": "web3py-v7-transmuter",
+  "version": "1.0.0",
+  "engine": "python",
+  "description": "Automated migration recipe for web3.py v6 to v7, handling naming conventions, exceptions, and middleware refactoring.",
+  "author": "R4nd0m",
+  "license": "Apache-2.0",
+  "meta": {
+    "tags": ["python", "web3", "migration", "ethereum"],
+    "changeType": "breaking-change"
+  }
+}
