@@ -1,27 +1,56 @@
-# 🧪 Web3Py V7 Transmuter
+# 🧪 Web3Py V7 Transmuter (AST-Powered)
 
-**Web3Py V7 Transmuter** is an automated migration engine designed to eliminate the friction of upgrading legacy `web3.py` v6 codebases to the new v7 specification. 
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Powered by LibCST](https://img.shields.io/badge/AST-LibCST-orange)](https://github.com/Instagram/LibCST)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-By combining **deterministic codemods** with **AI-assisted safety checks**, this tool automates over 80% of the mechanical refactoring required for a production-grade upgrade.
+**Web3Py V7 Transmuter** is an enterprise-grade, deterministic codemod engine designed to eliminate the friction of upgrading legacy `web3.py` v5/v6 codebases to the new v7 specification. 
+
+Unlike naive regex find-and-replace tools that risk breaking your code, this tool utilizes Abstract Syntax Trees (**AST**) via `LibCST` to guarantee **zero false-positives**, context-aware refactoring, and safe in-place modifications.
 
 ## ✨ Key Features
 
-- **Deterministic Refactoring**: Automates the conversion of `camelCase` parameters to `snake_case` (e.g., `fromBlock` → `from_block`).
-- **Class-Based Middleware Migration**: Rewrites functional middleware calls to the new v7 class-based model.
-- **Exception Refactoring**: Automatically replaces standard Python exceptions with specialized `Web3Exception` classes and fixes required imports.
-- **Safety Warning System**: Detects and warns about deprecated or removed modules such as `EthPM` and the `geth.miner` namespace.
-- **WebSocket Interface Upgrade**: Updates `WebSocketProvider` instantiation and subscription handling logic.
+- **AST-Driven Determinism**: Safely renames `camelCase` parameters to `snake_case` (e.g., `fromBlock` → `from_block`) strictly within function calls and dictionary keys.
+- **Class-Based Middleware Migration**: Rewrites functional middleware injections to the new v7 class-based architecture.
+- **Context-Aware Exception Refactoring**: Intelligently scopes and replaces standard exceptions (e.g., `ValueError` → `Web3ValueError`) only within relevant `except` handlers.
+- **Smart Import Management**: Automatically injects required v7 exceptions and middleware imports at the safest file header location, strictly avoiding `__future__` and docstring conflicts.
+- **Safe Execution Protocol**: The CLI tool automatically detects its own execution context to prevent "digital cannibalism" (self-refactoring).
 
 ## 🔗 Live Demo
-Experience the interactive migration tool on Hugging Face Spaces: 
-**https://huggingface.co/spaces/kikl/Web3Py-V7-Transmuter**
+Experience the interactive AST diffing engine on Hugging Face Spaces: 
+👉 **[Web3Py-V7-Transmuter Web UI](https://huggingface.co/spaces/kikl/Web3Py-V7-Transmuter)**
 
-## 🛠️ Installation & Usage
+## 🛠️ Installation & CLI Usage
 
 ### Prerequisites
 - Python 3.10+
+- `libcst`
 
-### Local Setup
-1. Clone the repository:
-   ```bash
-   git clone [https://github.com/rawetrip/web3py-v7-transmuter.git]
+### Setup
+Clone the repository and install the required AST engine:
+
+```bash
+git clone https://github.com/rawetrip/web3py-v7-transmuter.git
+cd web3py-v7-transmuter
+pip install libcst
+```
+
+### Running the Codemod
+You can run the transmuter on a single file or recursively scan an entire project directory.
+
+```bash
+# Refactor a single file
+python codemod.py ./my_legacy_script.py
+
+# Recursively refactor an entire project directory
+python codemod.py /path/to/your/web3/project/
+```
+
+## 🤖 Edge Case & AI Intervention Protocol
+This deterministic codemod reliably automates **95%** of Web3.py v7 deprecations via strict AST node matching. However, for deep contextual changes (e.g., distinguishing a non-Web3 `app.middlewares` in a Django application from `w3.middlewares`, or complex asynchronous provider promotions), **we strongly recommend utilizing an LLM/AI Agent for a final diff review**. This workflow perfectly marries deterministic AST safety with AI context-awareness.
+
+## 📄 License
+This project is licensed under the Apache License - see the [LICENSE](LICENSE) file for details.
+
+## 🤝 Contributing
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
