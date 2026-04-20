@@ -2,9 +2,9 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![Powered by LibCST](https://img.shields.io/badge/AST-LibCST-orange)](https://github.com/Instagram/LibCST)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-**Web3Py V7 Transmuter** is an enterprise-grade, deterministic codemod engine designed to eliminate the friction of upgrading legacy `web3.py` v5/v6 codebases to the new v7 specification. 
+**Web3Py V7 Transmuter** is an enterprise-grade, deterministic codemod engine designed to eliminate the friction of upgrading legacy `web3.py` v5/v6 codebases to the new v7 specification.
 
 Unlike naive regex find-and-replace tools that risk breaking your code, this tool utilizes Abstract Syntax Trees (**AST**) via `LibCST` to guarantee **zero false-positives**, context-aware refactoring, and safe in-place modifications.
 
